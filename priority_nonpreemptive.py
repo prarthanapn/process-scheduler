@@ -17,7 +17,7 @@ def calculate_priority_np_data(arrival_times, burst_times, priorities):
     current_time = 0
     completed_count = 0
 
-    completion_time = [0] * n
+    finish_time = [0] * n
     turnaround_time = [0] * n
     waiting_time = [0] * n
 
@@ -31,10 +31,10 @@ def calculate_priority_np_data(arrival_times, burst_times, priorities):
         idx = min(eligible, key=lambda x: priorities[x])
 
         # Execute process
-        start_time = current_time
-        current_time += burst_times[idx]
-        completion_time[idx] = current_time
-        turnaround_time[idx] = completion_time[idx] - arrival_times[idx]
+        start_time = max(current_time, arrival_times[idx])  # <-- FIX
+        current_time = start_time + burst_times[idx]        # <-- FIX
+        finish_time[idx] = current_time
+        turnaround_time[idx] = finish_time[idx] - arrival_times[idx]
         waiting_time[idx] = turnaround_time[idx] - burst_times[idx]
         completed[idx] = True
         completed_count += 1
@@ -46,7 +46,7 @@ def calculate_priority_np_data(arrival_times, burst_times, priorities):
             'Arrival Time': arrival_times[i],
             'Burst Time': burst_times[i],
             'Priority': priorities[i],
-            'Completion Time': completion_time[i],
+            'Finish Time': finish_time[i],
             'Turnaround Time': turnaround_time[i],
             'Waiting Time': waiting_time[i]
         })

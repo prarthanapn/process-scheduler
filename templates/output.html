@@ -19,6 +19,9 @@
                     <th>Job</th>
                     <th>Arrival Time</th>
                     <th>Burst Time</th>
+                    {% if results.job_details and results.job_details[0].get('Priority') is not none %}
+        <th>Priority</th>
+      {% endif %}
                     <th>Completion Time</th>
                     <th>Turnaround Time</th>
                     <th>Waiting Time</th>
@@ -30,6 +33,9 @@
                     <td>{{ job.Job }}</td>
                     <td>{{ job["Arrival Time"] }}</td>
                     <td>{{ job["Burst Time"] }}</td>
+                     {% if job.get('Priority') is not none %}
+        <td>{{ job.get("Priority", "-") }}</td>
+      {% endif %}
                     <td>{{ job["Finish Time"] }}</td>
                     <td>{{ job["Turnaround Time"] }}</td>
                     <td>{{ job["Waiting Time"] }}</td>
