@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CPU Scheduling Simulator</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h2>Input</h2>
+        <form action="/output" method="POST">
+            <label for="algorithm">Algorithm</label>
+            <select id="algorithm" name="algorithm" onchange="toggleFields()">
+                <option value="fcfs">First Come First Serve (FCFS)</option>
+                <option value="roundrobin">Round Robin</option>
+                <option value="sjf">SJF (Non-Preemptive)</option>
+                <option value="srtf">SRTF (Preemptive)</option>
+                <option value="priority_np">Priority (Non-Preemptive)</option>
+                <option value="priority_p">Priority (Preemptive)</option>
+            </select>
+
+            <div id="quantumField" class="hidden">
+                <label for="quantum">Time Quantum</label>
+                <input type="number" name="quantum" id="quantum" min="1" placeholder="e.g. 2">
+            </div>
+
+            <label for="arrival">Arrival Times</label>
+            <input type="text" name="arrival" id="arrival" placeholder="e.g. 0 2 3 4 5" required>
+
+            <label for="burst">Burst Times</label>
+            <input type="text" name="burst" id="burst" placeholder="e.g. 2 3 4 5 6" required>
+
+            <div id="priorityField" class="hidden">
+                <label for="priority">Priority (lower = higher)</label>
+                <input type="text" name="priority" id="priority" placeholder="e.g. 1 3 2 4 1">
+                <small>Note: Lower number = higher priority</small>
+            </div>
+
+            <button type="submit">Solve</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleFields() {
+            const algo = document.getElementById('algorithm').value;
+            document.getElementById('quantumField').classList.toggle('hidden', algo !== 'roundrobin');
+            document.getElementById('priorityField').classList.toggle('hidden', !algo.startsWith('priority'));
+        }
+
+        window.onload = toggleFields;
+    </script>
+</body>
+</html>
+

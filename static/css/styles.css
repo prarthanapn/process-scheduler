@@ -1,0 +1,77 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #0077b6, #90e0ef);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #03045e;
+    font-size: 18px; /* Base font size increased */
+}
+
+.container {
+    background: #caf0f8;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    width: 480px;
+}
+
+h2 {
+    text-align: center;
+    color: #03045e;
+    margin-bottom: 25px;
+    font-size: 32px; /* Larger heading */
+}
+
+label {
+    display: block;
+    margin: 16px 0 8px;
+    color: #03045e;
+    font-size: 20px; /* Larger labels */
+}
+
+input, select {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 2px solid #0077b6;
+    border-radius: 10px;
+    font-size: 18px; /* Larger input text */
+    background-color: #fff;
+    color: #03045e;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #00b4d8;
+    box-shadow: 0 0 5px rgba(0, 180, 216, 0.5);
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background: #00b4d8;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px; /* Larger button text */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0077b6;
+}
+
+small {
+    color: #03045e;
+    font-size: 16px; /* Larger small note */
+}
+
+.hidden {
+    display: none;
+}
